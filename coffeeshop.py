@@ -13,7 +13,6 @@ def main():
     print(f'Flavor - {flavor}')
     print(f'topping - {topping}')
     print("Thanks for your order!")
-    
 
 
 def menu(choices, title="Erik's menu", prompt="Choose your item: "):
@@ -25,12 +24,21 @@ def menu(choices, title="Erik's menu", prompt="Choose your item: "):
         print(f'{item} - {choice}')
         item += 1
 
-    user_choice = input(prompt)
-    answer = choices[int(user_choice) - 1]
+
+    while True:
+        user_choice = input(prompt)
+        allowed_answers = []    
+        for i in range(1, len(choices) + 1):
+            allowed_answers.append(str(i))
+        
+        if user_choice in allowed_answers:
+            answer = choices[int(user_choice) - 1]
+            break
+        else:
+            print(f'Enter number from 1 to {len(choices)}')
+            answer = ''
 
     return answer
-
-
 
 
 if __name__ == '__main__':

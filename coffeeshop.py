@@ -1,7 +1,7 @@
 def main():
-    drinks = ('Chokolate', 'Coffee', 'Decaf')
-    flavors = ('Caramel', 'Vanilia', 'Peppermint', 'Raspberry', 'Plain')
-    toppings = ('Chokolate', 'Cinnamon', 'Caramel')
+    drinks = read_menu('drinks.txt')
+    flavors = read_menu('flavors.txt')
+    toppings = read_menu('toppings.txt')
 
     drink = menu(drinks, "Erik`s drinks", 'Choose your drink: ')
     flavor = menu(flavors, "Erik's flavors", 'Choose your flavor:  ')
@@ -45,6 +45,14 @@ def menu(choices, title="Erik's menu", prompt="Choose your item: "):
             answer = ''
 
     return answer
+
+def read_menu(filename):
+    my_file = open(filename)
+    resoult = my_file.readlines()
+    for item in range(len(resoult)):
+        resoult[item] = resoult[item].rstrip('\n')
+    my_file.close
+    return resoult
 
 
 if __name__ == '__main__':

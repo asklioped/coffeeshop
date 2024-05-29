@@ -1,12 +1,16 @@
 def main():
+    # Reading from the programs's basic data file and 
+    # transfaring it to lists
     drinks = read_menu('drinks.txt')
     flavors = read_menu('flavors.txt')
     toppings = read_menu('toppings.txt')
 
+    # Receiving information from the user
     drink = menu(drinks, "Erik`s drinks", 'Choose your drink: ')
     flavor = menu(flavors, "Erik's flavors", 'Choose your flavor:  ')
     topping = menu(toppings, "Erik's toppings", 'Choose yout flavors: ')
 
+    # Output or information
     print()
     print("Here is your order:")
     print(f'Main product - {drink}')
@@ -16,6 +20,7 @@ def main():
 
 
 def menu(choices, title="Erik's menu", prompt="Choose your item: "):
+    # User dialogue function
     print()
     print(title)
     print(len(title) * '-')
@@ -24,15 +29,17 @@ def menu(choices, title="Erik's menu", prompt="Choose your item: "):
         print(f'{item} - {choice}')
         item += 1
 
+    # Controling user input
     while True:
         user_choice = input(prompt)
-        allowed_answers = []    
+        allowed_answers = []
         for i in range(1, len(choices) + 1):
             allowed_answers.append(str(i))
 
+        # Adding the ability to skip question
         allowed_answers.append('X')
         allowed_answers.append('x')
-        
+
         if user_choice in allowed_answers:
             if user_choice == 'X' or user_choice == 'x':
                 answer = ''
@@ -46,7 +53,9 @@ def menu(choices, title="Erik's menu", prompt="Choose your item: "):
 
     return answer
 
+
 def read_menu(filename):
+    # The function of reading from a file
     my_file = open(filename)
     resoult = my_file.readlines()
     for item in range(len(resoult)):

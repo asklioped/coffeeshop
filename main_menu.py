@@ -7,7 +7,9 @@ def main_menu():
 
         if confirm.lower() == 'y':
             save_order(order)
+            print()
             print('Thanks for your order: ')
+            print()
             print_order(order)
         else:
             continue
@@ -97,4 +99,5 @@ def save_order(order):
     return
 
 
-main_menu()
+if __name__ == "__main__":
+    main_menu()
